@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public class PersonalDataPage {
 
@@ -13,6 +14,7 @@ public class PersonalDataPage {
     By emailField = By.xpath("//input[@placeholder='twoj.email@przyklad.pl']");
     By telephoneField = By.xpath("//input[@placeholder='+48 770 001 015']");
     By addressField = By.xpath("//textarea[@name='address']");
+
 
 
     public PersonalDataPage(WebDriver driver) {
@@ -45,6 +47,25 @@ public class PersonalDataPage {
 
     }
 
+    //MethodForAssertions
+
+    public boolean isNameInputDisplayed(){
+        if(driver.findElement(nameField).isDisplayed()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public boolean isSecondNameInputDisplayed(){
+        if(driver.findElement(secondNameField).isDisplayed()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
     public boolean isNameSet(String name){
       String valueSet =  driver.findElement(nameField).getAttribute("value");
       if(valueSet.equals(name)){
@@ -52,8 +73,19 @@ public class PersonalDataPage {
       }else{
           return false;
       }
-
     }
+
+    public boolean isSecondNameSet(String secondName){
+        String valueSet =  driver.findElement(secondNameField).getAttribute("value");
+        if(valueSet.equals(secondName)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
     public boolean isEmailAdressContainsAtSign(){
         String emailSet = driver.findElement(emailField).getAttribute("value");
         if(emailSet.contains("@")){

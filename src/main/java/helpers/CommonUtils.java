@@ -9,7 +9,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class CommonUtils {
-   public static void takeScreenShot(WebDriver driver)throws IOException{
+    private WebDriver driver;
+
+    public CommonUtils(WebDriver driver) {
+        this.driver = driver;
+    }
+
+
+    public void takeScreenShot(WebDriver driver)throws IOException{
        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
        FileUtils.copyFile(scrFile, new File("screenshit.png"));
    }
